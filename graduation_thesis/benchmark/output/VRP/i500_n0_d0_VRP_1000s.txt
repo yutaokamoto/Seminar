@@ -1,0 +1,5 @@
+Obj	674.6
+
+Number of Bins	193
+
+Opt model	# Model: /Users/yutaokamoto/Desktop/yutaokamoto_mac/Seminar/benchmark/output/VRP/i500_n0_d0_VRP_1000s_8, vehicle:193, customer:500,  resource:('distance', 'freight_1M1', 'timecost')

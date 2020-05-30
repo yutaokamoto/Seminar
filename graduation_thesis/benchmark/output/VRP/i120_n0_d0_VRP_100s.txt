@@ -1,0 +1,3 @@
+Obj	1000498.0
+
+Number of Bins	45

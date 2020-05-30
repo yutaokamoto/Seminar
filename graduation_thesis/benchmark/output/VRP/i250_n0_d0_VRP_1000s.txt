@@ -1,0 +1,7 @@
+Obj	319
+
+Func value	150.0
+
+Number of Bins	100
+
+Opt model	# Model: /Users/yutaokamoto/Desktop/yutaokamoto_mac/Seminar/benchmark/output/VRP/i250_n0_d0_VRP_1000s_7, vehicle:100, customer:250,  resource:('distance', 'freight_1M1', 'timecost')

@@ -1,0 +1,3 @@
+Obj	251790.0
+
+Number of Bins	199

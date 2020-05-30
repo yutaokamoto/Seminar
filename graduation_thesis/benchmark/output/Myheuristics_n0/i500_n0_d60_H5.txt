@@ -1,0 +1,7 @@
+Number of Bins	309
+
+Bin cost	5
+
+Penalty	465
+
+obj	2010

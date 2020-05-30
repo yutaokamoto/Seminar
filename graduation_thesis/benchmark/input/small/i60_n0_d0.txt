@@ -1,0 +1,95 @@
+Number of items	60	
+
+Graph density	0.0%	
+
+Capacity of bins	150	
+
+Costs of spliting groups	[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]	
+
+Costs of using bins	5	
+
+Weight of items
+w	32
+w	33
+w	90
+w	63
+w	23
+w	86
+w	81
+w	25
+w	23
+w	33
+w	58
+w	92
+w	28
+w	51
+w	71
+w	25
+w	96
+w	73
+w	96
+w	36
+w	66
+w	89
+w	85
+w	82
+w	78
+w	48
+w	62
+w	23
+w	49
+w	64
+w	47
+w	90
+w	43
+w	74
+w	77
+w	33
+w	69
+w	77
+w	65
+w	32
+w	78
+w	30
+w	31
+w	42
+w	96
+w	59
+w	69
+w	75
+w	80
+w	94
+w	33
+w	87
+w	43
+w	57
+w	84
+w	97
+w	49
+w	63
+w	59
+w	78
+
+Number of Edges	0	
+
+Edges
+
+Number of Groups	16	
+
+Groups
+g	(47, 58, 35)
+g	(13,)
+g	(33, 19)
+g	(32,)
+g	(46,)
+g	(7, 55, 49, 17)
+g	(5, 1, 27, 48, 56, 29, 38, 20, 22, 11, 36, 53, 8)
+g	(26,)
+g	(15, 18, 54)
+g	(57,)
+g	(9, 39)
+g	(24,)
+g	(3,)
+g	(21, 16, 4, 2, 30, 10, 43, 40, 31, 12, 23)
+g	(50, 6, 25, 14)
+g	(0, 34, 37, 41, 42, 44, 45, 51, 52, 59, 28)

@@ -1,0 +1,7 @@
+Number of Bins	208
+
+Bin cost	5
+
+Penalty	468
+
+obj	1508
