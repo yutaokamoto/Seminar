@@ -1,0 +1,5 @@
+*.ipynb_checkpoints
+.DS_Store
+./Seminar/benchmark/output/VRP/i1000_n1_d0_VRP_1000s_1.timecost
+./Seminar/benchmark/output/VRP/i1000_n1_d0_VRP_1000s_4.timecost
+./Seminar/benchmark/output/VRP/i1000_n0_d10_VRP_1000s_0.freight_1M1
