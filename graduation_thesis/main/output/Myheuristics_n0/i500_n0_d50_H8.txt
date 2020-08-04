@@ -1,7 +1,0 @@
-Number of Bins	280
-
-Bin cost	5
-
-Penalty	599
-
-obj	1999

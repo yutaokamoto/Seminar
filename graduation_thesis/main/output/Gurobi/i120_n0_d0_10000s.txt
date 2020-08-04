@@ -1,4 +1,0 @@
-Object value	None
-
-Best objective 5.400000000000e+01, best bound 5.060000000000e+01, gap 6.2963%
-
