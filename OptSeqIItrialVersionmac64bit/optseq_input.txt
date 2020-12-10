@@ -1,0 +1,39 @@
+resource slice  
+ interval 0 inf capacity 1  
+resource simmer  
+ interval 0 inf capacity 1  
+resource decorate  
+ interval 0 inf capacity 1  
+activity Act[1_1] 
+ mode  duration 2  
+ slice interval 0 inf requirement 1   
+activity Act[1_2] 
+ mode  duration 3  
+ simmer interval 0 inf requirement 1   
+activity Act[1_3] 
+ mode  duration 1  
+ decorate interval 0 inf requirement 1   
+activity Act[2_1] 
+ mode  duration 4  
+ slice interval 0 inf requirement 1   
+activity Act[2_2] 
+ mode  duration 2  
+ simmer interval 0 inf requirement 1   
+activity Act[2_3] 
+ mode  duration 3  
+ decorate interval 0 inf requirement 1   
+activity Act[3_1] 
+ mode  duration 1  
+ slice interval 0 inf requirement 1   
+activity Act[3_2] 
+ mode  duration 4  
+ simmer interval 0 inf requirement 1   
+activity Act[3_3] 
+ mode  duration 1  
+ decorate interval 0 inf requirement 1   
+temporal Act[1_1] Act[1_2]  type CS delay 0  
+temporal Act[1_2] Act[1_3]  type CS delay 0  
+temporal Act[2_1] Act[2_2]  type CS delay 0  
+temporal Act[2_2] Act[2_3]  type CS delay 0  
+temporal Act[3_1] Act[3_2]  type CS delay 0  
+temporal Act[3_2] Act[3_3]  type CS delay 0 
