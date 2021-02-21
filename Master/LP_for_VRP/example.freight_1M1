@@ -1,0 +1,14 @@
+# Model: example, vehicle:2, customer:5,  resource:('distance', 'freight_1M1', 'timecost')
+# filename: example.freight_1M1
+# customer_number  vehicle_number  dimension feasible_cost
+5 2 1 0
+# vehicle data
+1.0 0 10.002285638628857 0 10.002285638628857 10.002285638628857
+1.0 0 10.987155732930649 0 10.987155732930649 10.987155732930649
+# customer data
+6.888437030500963
+-0.4680609169528829
+8.194925119364804
+-0.5571456909457329
+-4.790153792160812
+# edge data

@@ -1,0 +1,40 @@
+========= The input ===========
+INSTANCE(-I) : example
+LOGFILE(-L) : vrp_d_1m1_t.log
+CSVFILE(-c) : vrp_solution.csv
+SOLFILE(-i) : (null)
+TimeLimit(-T) : 11 sec
+LSLimit(-l) : 100 times
+Seed(-S) : 0
+Verbose(-v) : 0
+L_cross(-Nc) : 3
+L_intra_path(-Np) : 3
+L_intra_insert(-Ni) : 100
+L_two_opt(-Nt) : 5
+Vehicles : 0
+Perturb : 3
+Coefficient distance(-C distance value): 1.00
+Coefficient freight_1M1(-C freight_1M1 value): 1.00
+Coefficient timecost(-C timecost value): 1.00
+
+53.586947 53.586947 0.000000 0.000000 53.586947 
+vehicle, 1, 21.228493, 21.228493, 0.000000, 0.000000
+customer,distance,freight_1M1_0,arrival,service,departure,timecost,travelcost,
+0,,0.468061,,,0.000000,,0.000000,
+2,4.364250,-0.468061,4.364250,29.169102,29.169102,0.000000,0.000000,
+3,12.333969,8.194925,37.138821,40.510862,40.510862,0.000000,0.000000,
+0,21.228493,8.194925,49.405386,49.405386,,0.000000,,
+vehicle, 2, 32.358453, 32.358453, 0.000000, 0.000000
+customer,distance,freight_1M1_0,arrival,service,departure,timecost,travelcost,
+0,,5.347299,,,0.000000,,0.000000,
+4,8.552755,-0.557146,8.552755,8.552755,8.552755,0.000000,0.000000,
+5,21.100131,-4.790154,21.100131,27.434965,27.434965,0.000000,0.000000,
+1,27.531518,6.888437,33.866352,33.866352,33.866352,0.000000,0.000000,
+0,32.358453,6.888437,38.693287,38.693287,,0.000000,,
+53.586947 53.586947 0.000000 0.000000 53.586947 
+Best Feasible Solution 53.59
+0->2->3->0
+0->4->5->1->0
+Best Solution 53.59
+0->2->3->0
+0->4->5->1->0
