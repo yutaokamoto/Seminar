@@ -1,4 +1,0 @@
-Number of customers : 32
-Feasibility : True
-Objective value : 0.0
-Execution time : 0.0010378360748291016
