@@ -1,0 +1,45 @@
+# Model: R101, vehicle:12, customer:26,  resource:('distance', 'freight_1M1', 'timecost')
+# filename: R101.freight_1M1
+# customer_number  vehicle_number  dimension feasible_cost
+26 12 1 0
+# vehicle data
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+1.0 0 400 0 400 400
+# customer data
+0
+10
+7
+13
+19
+26
+3
+5
+9
+16
+16
+12
+19
+23
+20
+8
+19
+2
+12
+17
+9
+11
+18
+29
+3
+6
+# edge data
