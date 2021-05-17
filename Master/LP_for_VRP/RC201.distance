@@ -1,10 +1,8 @@
-# Model: RC201, vehicle:12, customer:26,  resource:('distance', 'freight_1M1', 'timecost')
+# Model: RC201, vehicle:10, customer:26,  resource:('distance', 'freight_1M1', 'timecost')
 # filename: RC201.distance
 # customer_number  vehicle_number  dimension feasible_cost
-26 12 1 
+26 10 1 
 # vehicle data
-1.0 10000000
-1.0 10000000
 1.0 10000000
 1.0 10000000
 1.0 10000000
