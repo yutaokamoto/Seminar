@@ -26,7 +26,7 @@ def make_instance():
     Customers["depot"] = Customer(0,0,0,0,1000,0)
     # ここにコードを書く
     # ランダムに顧客数を決める
-    N = random.randint(10, 10000)
+    N = random.randint(10, 100)
     # ランダムに各顧客の情報(座標、時間枠, サービスタイム)を決める
     lower = 1
     for i in range(N):
