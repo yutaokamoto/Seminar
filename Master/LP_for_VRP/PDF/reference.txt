@@ -1,0 +1,9 @@
+課題
+・主問題の最適解を与えているにもかかわらず、双対問題を解く方が主問題を解くよりも時間がかかってしまう。　→　問題の設定を複雑にする（どんな線形な制約を持った配送計画問題にも使えることが売りのため、そこを活かす）。
+
+分からなかったこと
+・双対問題を解く際、主問題の最適解を与えているにもかかわらず、iterationが0にならない　←　Pushもiterationに含まれる。(参考 : https://www.gurobi.com/documentation/9.1/refman/barrier_logging.html)
+・Crossoverとは？ : Barrierによってinterior solutionをbasic solutionへ変換する。(参考 : https://www.gurobi.com/documentation/9.1/refman/crossover.html#parameter:Crossover)
+・interior point : 内点。
+・interior solution : 内点解。主問題と双対問題の制約式を満たす解（!=0とは限らない）。（参考 : http://www.me.titech.ac.jp/~mizu_lab/text/pdf-file/LP4-IP.pdf, http://www.orsj.or.jp/archive2/or64-4/or64_4_218.pdf）
+・interior solutionとbasic solutionの違い : 実行可能領域の内部にあるのがinterior solutionで、面上にあるのがbasic solution。
