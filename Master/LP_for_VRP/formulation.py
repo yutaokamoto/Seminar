@@ -1,6 +1,6 @@
 # 主問題を解く関数の定義
 ## 与えられた定数を元にLPのモデルを作成した上でそれを解き、最適解を返す関数
-def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2, instance_name, num_vars):
+def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq, instance_name, num_vars):
     import gurobipy as gp
     from gurobipy import GRB
     import numpy as np
@@ -28,12 +28,12 @@ def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2, 
     
     # 目的関数を設定
     ## 各制約の違反度を最小化する
-    m.setObjective(c1.T @ p + c2.T @ q, sense=gp.GRB.MINIMIZE)
+    m.setObjective(op.T @ p + oq.T @ q, sense=gp.GRB.MINIMIZE)
     
     # 制約条件を設定
     ## 各係数行列のサイズを合わせる
     m.addConstr(As @ s + Ac_leq @ c + Ar_leq @ r + Ap @ p + Aq @ q <= b_leq, name="c_leq")
-    #m.addConstr(Ac_eq @ c + Ar_eq @ r == b_eq, name="c_eq")
+    m.addConstr(Ac_eq @ c + Ar_eq @ r == b_eq, name="c_eq")
 
     # モデルのアップデート
     m.update()
@@ -42,8 +42,8 @@ def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2, 
     start = time.time()
     
     # パラメータ
-    #m.Params.Presolve = 0
-    #m.Params.Method = 0
+    m.Params.Presolve = 0
+    m.Params.Method = 0
     
     # 最適化
     m.optimize()
@@ -64,7 +64,7 @@ def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2, 
     return m
 
 # 双対問題を解く関数の定義
-def solve_dual(As, Ap, b, c, instance_name, num_vars, PStarts, DStarts):
+def solve_dual(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq, instance_name, num_vars_1, num_vars_2, PStarts, DStarts):
     import gurobipy as gp
     from gurobipy import GRB
     import numpy as np
@@ -75,20 +75,24 @@ def solve_dual(As, Ap, b, c, instance_name, num_vars, PStarts, DStarts):
     
     # 変数を設定
     """
-    y_i : 主問題における制約式iの潜在価値
+    y1 : 主問題における不等式制約式iの潜在価値
+    y2 : 主問題における等式制約式iの潜在価値
     """
-    y = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="y")
+    y1 = m.addMVar(shape=num_vars_1, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="y1")
+    y2 = m.addMVar(shape=num_vars_2, lb=-1000, ub=float('inf'), vtype=GRB.CONTINUOUS, name="y2")
 
     # モデルのアップデート
     m.update()
     
     # 目的関数を設定
-    m.setObjective(-1 * b.T @ y, sense=gp.GRB.MAsIMIZE)
+    m.setObjective(-1 * b_leq.T @ y1 + -1 * b_eq.T @ y2, sense=gp.GRB.MAXIMIZE)
     
     # 制約条件を設定
-    m.addConstr(As.T @ y >= 0, name="c1")
-    m.addConstr(Ap.T @ y + c >= 0, name="c2")
-    #m.addConstr(y >= 0, name="c3")
+    m.addConstr(As.T @ y1 >= 0, name="c1")
+    m.addConstr(Ap.T @ y1 >= -op, name="c2")
+    m.addConstr(Aq.T @ y1 >= -oq, name="c3")
+    m.addConstr(Ac_leq.T @ y1 + Ac_eq.T @ y2 >= 0, name="c4")
+    m.addConstr(Ar_leq.T @ y1 + Ar_eq.T @ y2 >= 0, name="c5")
 
     # モデルのアップデート
     m.update()
@@ -100,14 +104,13 @@ def solve_dual(As, Ap, b, c, instance_name, num_vars, PStarts, DStarts):
     for i, var in enumerate(m.getVars()):
         var.PStart = PStarts[i]
     for i, constr in enumerate(m.getConstrs()):
-        #if i < DStarts.shape[0]:
         constr.DStart = DStarts[i]
     
     # パラメータの設定
-    ##m.Params.Crossover = 4
-    m.Params.Method = 0
     m.Params.Presolve = 0
-    m.Params.Displayinterval = 2**31-1
+    m.Params.Method = 0
+    #m.Params.Crossover = 4
+    #m.Params.Displayinterval = 2**31-1
     
     # 最適化
     m.optimize()

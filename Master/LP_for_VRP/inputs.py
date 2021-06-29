@@ -80,12 +80,12 @@ def make_charge_constr(tour, Customers, Points, As, Ac_eq, Ac_leq, Ar_eq, Ar_leq
                 i_prev = i-1
             Ac_eq.append([-1 if i_prev==target else 0 for target in tour])
             Ar_eq.append([1 if i==target else -1 if i_prev==target else 0 for target in tour])
-            b_eq.append(distance(Customers[i].x, Customers[i].y, Customers[i_prev].x, Customers[i_prev].y))
+            b_eq.append(0.01*distance(Customers[i].x, Customers[i].y, Customers[i_prev].x, Customers[i_prev].y))
     return As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq
 
 def make_inputs(tour, Customers, Points, F, C):
     import numpy as np
-    As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2 \
+    As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq \
         = [], [], [], [], [], [], [], [], [], [1 for _ in range(len(tour))], [1 for _ in range(len(tour))]
     
     # ルート内の顧客の順序に関する制約
@@ -122,6 +122,6 @@ def make_inputs(tour, Customers, Points, F, C):
     Aq = np.array(Aq)
     b_eq = np.array(b_eq)
     b_leq = np.array(b_leq)
-    c1 = np.array(c1)
-    c2 = np.array(c2)
-    return As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, c1, c2
+    op = np.array(op)
+    oq = np.array(oq)
+    return As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq

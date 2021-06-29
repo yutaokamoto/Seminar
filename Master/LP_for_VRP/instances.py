@@ -8,7 +8,7 @@ class Customer():
         self.d = d
         self.e = e
         self.l = l
-        self.s = s
+        self.s = s # サービスタイム
         self.t = t # 集荷から配達までの制限時間
 
 
@@ -18,10 +18,10 @@ def make_instance():
     random.seed(0)
     Customers = {}
     # 車両がdepotへ帰還する時刻を最小化したいので、時間枠を[0,0]とする。
-    Customers["depot"] = Customer(0,0,0,0,0,0,10000)
+    Customers["depot"] = Customer(0,0,0,0,0,0,100000)
     # ここにコードを書く
     # ランダムに顧客数を決める
-    N = 10#random.randint(1, 1)
+    N = 100#random.randint(1, 1)
     # ランダムに各顧客の情報(座標、時間枠, サービスタイム)を決める
     lower = 1
     for i in range(N):
@@ -42,29 +42,34 @@ Customers = make_instance()
 
 
 # # 集荷地点と配達地点を定める
-from scipy.special import comb
 import random
 random.seed(0)
-N = len(Customers)
-Cs = list(range(0,N))
-r = random.randint(0,N//2)
-P_plus_indexes = [random.randint(0,N-1) for i in range(r)]
-P_plus = [Cs[i] for i in P_plus_indexes]
-res = list(set(Cs)-set(P_plus))
+tour = list(Customers.keys())[1:]
+n = len(tour)
+n_pair = random.randint(0, n//2)
+pickup = set()
+delivery = set()
 Points = []
-for p in P_plus:
-    for d in res:
-        if p<d:
-            Points.append((p,d))
+for i in range(n_pair):
+    p, d = -1, -1
+    while True:
+        p = random.randint(0, n-1)
+        d = random.randint(p, n-1)
+        if p!=d and (p not in pickup) and (d not in delivery):
             break
-for Point in Points:
-    p, d = Point
-    Customers[p].t = random.randint(0,100)
-    Customers[d].t = random.randint(0,100)
+    pickup |= {p}
+    delivery |= {d}
+    Points.append((p, d))
+    #print("p= ", p, ", d = ", d)
+    Customers[p].t = random.randint(0,100000)
+    #print("demand of 'p' = ", Customers[p].d)
+    if Customers[d].d >= 0:
+        Customers[d].d = 0
+    Customers[d].d -= Customers[p].d
 
 # # 車両の各値の設定
-C = 100
-F = 80
+C = 500
+F = C*0.8
 
 
 # ## 巡回路の作成
