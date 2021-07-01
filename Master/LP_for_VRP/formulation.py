@@ -17,11 +17,11 @@ def solve_primal(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq, 
     p_i : 顧客iの時間枠の違反度を表す変数
     q_i : 顧客 i の荷物を配達するまでの制限時間に関する違反量を表す変数
     """
-    s = m.addMVar(shape=num_vars, vtype=GRB.CONTINUOUS, name="s")
-    r = m.addMVar(shape=num_vars, vtype=GRB.CONTINUOUS, name="r")
-    c = m.addMVar(shape=num_vars, vtype=GRB.CONTINUOUS, name="c")
-    p = m.addMVar(shape=num_vars, vtype=GRB.CONTINUOUS, name="p")
-    q = m.addMVar(shape=num_vars, vtype=GRB.CONTINUOUS, name="q")
+    s = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="s")
+    r = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="r")
+    c = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="c")
+    p = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="p")
+    q = m.addMVar(shape=num_vars, lb=0.0, ub=float('inf'), vtype=GRB.CONTINUOUS, name="q")
 
     # モデルのアップデート
     m.update()
@@ -126,6 +126,6 @@ def solve_dual(As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq, op, oq, in
     print('\033[34m'+f"実時間\t{elapsed_time}"+'\033[0m')"""
     
     # モデルをテキストファイルにする
-    m.write("out"+instance_name+".mst")
+    m.write("out"+instance_name+".json")
         
     return m
