@@ -80,7 +80,7 @@ def make_charge_constr(tour, Customers, Points, As, Ac_eq, Ac_leq, Ar_eq, Ar_leq
                 i_prev = i-1
             Ac_eq.append([-1 if i_prev==target else 0 for target in tour])
             Ar_eq.append([1 if i==target else -1 if i_prev==target else 0 for target in tour])
-            b_eq.append(0.01*distance(Customers[i].x, Customers[i].y, Customers[i_prev].x, Customers[i_prev].y))
+            b_eq.append(-0.1*distance(Customers[i].x, Customers[i].y, Customers[i_prev].x, Customers[i_prev].y))
     return As, Ac_eq, Ac_leq, Ar_eq, Ar_leq, Ap, Aq, b_eq, b_leq
 
 def make_inputs(tour, Customers, Points, F, C):
