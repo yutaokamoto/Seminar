@@ -1,1 +1,1 @@
-{ "SolutionInfo": { "Status": 2, "Runtime": "1.6801714897155762e-01", "ObjVal": "2.2531336027210674e+05", "BoundVio": "0", "ConstrVio": "4.5474735088646412e-13", "IterCount": "3081", "BarIterCount": 0}}
+{ "SolutionInfo": { "Status": 2, "Runtime": "0.356295108795166", "ObjVal": "2.2531336027210669e+05", "BoundVio": "0", "ConstrVio": "3.9257486150745535e-13", "IterCount": "1599", "BarIterCount": 0}}
