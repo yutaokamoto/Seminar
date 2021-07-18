@@ -21,7 +21,7 @@ def make_instance():
     Customers["depot"] = Customer(0,0,0,0,0,0,100000)
     # ここにコードを書く
     # ランダムに顧客数を決める
-    N = 100#random.randint(1, 1)
+    N = 5 #random.randint(1, 1)
     # ランダムに各顧客の情報(座標、時間枠, サービスタイム)を決める
     lower = 1
     for i in range(N):
@@ -29,7 +29,7 @@ def make_instance():
         y = random.randint(0,10)
         d = 0
         e = random.randint(lower,lower+2)
-        l = random.randint(e,e+5)
+        l = random.randint(e,e+20)
         s = 0
         #t = random.randint(0,10)
         Customers[i] = Customer(x, y, d, e, l, s)
@@ -61,14 +61,14 @@ for i in range(n_pair):
     delivery |= {d}
     Points.append((p, d))
     #print("p= ", p, ", d = ", d)
-    Customers[p].t = random.randint(0,100000)
+    Customers[p].t = random.randint(0,500)
     #print("demand of 'p' = ", Customers[p].d)
     if Customers[d].d >= 0:
         Customers[d].d = 0
     Customers[d].d -= Customers[p].d
 
 # # 車両の各値の設定
-C = 500
+C = 100
 F = C*0.8
 
 
